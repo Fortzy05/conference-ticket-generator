@@ -1,0 +1,5 @@
+[
+  { "type": "REGULAR ACCESS", "price": "FREE", "seatsLeft": 20 },
+  { "type": "VIP ACCESS", "price": "$150", "seatsLeft": 20 },
+  { "type": "VVIP ACCESS", "price": "$150", "seatsLeft": 20 }
+]

@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import TicketSelection from "./components/SelectTicket";
+import ConferenceAttendanceForm from "./components/ConferenceAttendanceForm";
+import TicketConfirmation from "./components/TicketConfirmation";
+import Header from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    avatar: "",
+  });
+
+  const nextStep = () => setStep(step + 1);
+  const prevStep = () => setStep(step - 1);
+  const resetForm = () => {
+    setFormData({ fullName: "", email: "", avatar: "" });
+    setStep(1);
+  };
+
+  // Define the onSubmit function
+  const handleSubmit = (data) => {
+    // Update the formData state with the submitted data
+    setFormData((prevData) => ({
+      ...prevData,
+      fullName: data.fullName,
+      email: data.email,
+      avatar: data.avatarUrl, // Assuming avatarUrl is returned from ConferenceAttendanceForm
+    }));
+
+    // Move to the next step (step 3: TicketConfirmation)
+    nextStep();
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen w-[100%] flex flex-col items-center justify-center">
+      <Header />
+      <div className="bg-custom-gradient border-[#24A0B5] border rounded-lg shadow-lg max-w-xl w-full mt-12">
+        <div className="flex justify-center items-center mb-4">
+          {step === 1 && <TicketSelection nextStep={nextStep} />}
+          {step === 2 && (
+            <ConferenceAttendanceForm
+              prevStep={prevStep}
+              onSubmit={handleSubmit} // Pass the onSubmit function
+              formData={formData}
+              setFormData={setFormData}
+            />
+          )}
+          {step === 3 && (
+            <TicketConfirmation
+              formData={formData}
+              prevStep={prevStep}
+              onReset={resetForm}
+            />
+          )}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
