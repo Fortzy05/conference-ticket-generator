@@ -5,6 +5,7 @@ import TicketConfirmation from "./components/TicketConfirmation";
 import Header from "./components/Header";
 
 function App() {
+  const [selectedTicket, setSelectedTicket] = useState("");
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -14,23 +15,40 @@ function App() {
 
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
-  const resetForm = () => {
-    setFormData({ fullName: "", email: "", avatar: "" });
-    setStep(1);
-  };
+ 
 
+  const handleback = () => {
+    if (step > 1) {
+      setStep((prevStep) => prevStep - 1);
+    }
+  };
   // Define the onSubmit function
   const handleSubmit = (data) => {
-    // Update the formData state with the submitted data
+    
     setFormData((prevData) => ({
       ...prevData,
       fullName: data.fullName,
       email: data.email,
-      avatar: data.avatarUrl, // Assuming avatarUrl is returned from ConferenceAttendanceForm
+      avatar: data.avatarUrl, 
     }));
 
-    // Move to the next step (step 3: TicketConfirmation)
+    
     nextStep();
+  };
+  const handleCancel = () => {
+    setFormData({ fullName: "", email: "", avatar: "" }); 
+    setSelectedTicket(""); 
+    localStorage.removeItem("selectedTicket"); 
+    localStorage.removeItem("ticketQuantity"); 
+    setStep(1); 
+  };
+
+  const handleBookAnother = () => {
+    setFormData({ fullName: "", email: "", avatar: "" }); 
+    setSelectedTicket(""); 
+    localStorage.removeItem("selectedTicket"); 
+    localStorage.removeItem("ticketQuantity"); 
+    setStep(1); 
   };
 
   return (
@@ -38,20 +56,29 @@ function App() {
       <Header />
       <div className="bg-custom-gradient border-[#24A0B5] border rounded-lg shadow-lg max-w-xl w-full mt-12">
         <div className="flex justify-center items-center mb-4">
-          {step === 1 && <TicketSelection nextStep={nextStep} />}
+          {step === 1 && (
+            <TicketSelection
+              nextStep={nextStep}
+              selectedTicket={selectedTicket}
+              setSelectedTicket={setSelectedTicket}
+              onCancel={handleCancel}
+            />
+          )}
           {step === 2 && (
             <ConferenceAttendanceForm
               prevStep={prevStep}
               onSubmit={handleSubmit} // Pass the onSubmit function
               formData={formData}
               setFormData={setFormData}
+              onBack={handleback}
             />
           )}
           {step === 3 && (
             <TicketConfirmation
+              selectedTicket={selectedTicket}
               formData={formData}
               prevStep={prevStep}
-              onReset={resetForm}
+              onReset={handleBookAnother}
             />
           )}
         </div>

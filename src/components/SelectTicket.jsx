@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import ticket from "../assets/image.png"
-import ticketOptions from "./ticketOptions.json"
-const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep }) => {
-
-
+import ticket from "../assets/image.png";
+import ticketOptions from "./ticketOptions.json";
+const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel }) => {
   const [ticketQuantity, setTicketQuantity] = useState(1);
 
   useEffect(() => {
@@ -19,7 +17,6 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep }) => {
   }, [setSelectedTicket]);
 
   const handleTicketSelection = (ticketType) => {
-    setSelectedTicket = { setSelectedTicket };
     setSelectedTicket(ticketType);
     localStorage.setItem("selectedTicket", ticketType);
   };
@@ -31,17 +28,13 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep }) => {
   };
 
   return (
-    <div className="md:max-w-md w-[335px] mx-auto bg-custom-gradient font-jeju text-white md:px-6  rounded-lg shadow-lg max-w-full px-4">
+    <div className="md:max-w-md w-[335px] md:w-full mt-4 mx-auto bg-custom-gradient font-jeju text-white md:px-6  rounded-lg shadow-lg max-w-full px-4">
       {/* Step Indicator */}
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Ticket Selection</h2>
         <p className="text-sm text-gray-400">Step 1/3</p>
       </div>
-      <img
-        src={ticket}
-        alt="Ticket"
-        className="w-full h-2 mb-2"
-      />
+      <img src={ticket} alt="Ticket" className="w-full h-2 mb-2" />
 
       {/* Event Info */}
       <div className="bg-custom-gradient border-[#24A0B5] border p-4 rounded-lg mb-4">
@@ -66,10 +59,10 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep }) => {
             {ticketOptions.map((ticket) => (
               <button
                 key={ticket.type}
-                className={`p-2 font-jeju border border-ticz rounded-lg text-center transition-colors duration-300 ${
+                className={`p-2 font-jeju border border-[#197686] rounded-lg text-center transition-colors duration-300 ${
                   selectedTicket === ticket.type
-                    ? "bg-[#052228] text-white"
-                    : "bg-[#052228] hover:bg-[#07373F] hover:text-white border-[197686]"
+                    ? "bg-[#197686] text-white border-[#197686]"
+                    : "bg-[#052228] hover:bg-[#07373F] hover:text-white border-[#197686]"
                 }`}
                 onClick={() => handleTicketSelection(ticket.type)}
               >
@@ -100,7 +93,7 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep }) => {
 
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row justify-between mt-6 gap-2">
-        <button className="bg-transparent border border-[#197686] text-white px-4 py-2 rounded-lg w-full sm:w-30 hover:bg-[#24A0B5]">
+        <button onClick={onCancel} className="bg-transparent border border-[#197686] text-white px-4 py-2 rounded-lg w-full sm:w-30 hover:bg-[#24A0B5]">
           Cancel
         </button>
         <button
