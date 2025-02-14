@@ -87,7 +87,7 @@ export default function ConferenceAttendanceForm({ onBack, onSubmit }) {
   };
 
   return (
-    <div className="w-5/6 mx-auto p-6 border-2 rounded-lg shadow-lg ">
+    <div className="w-5/6 mx-auto p-6 text-white  border-2 rounded-lg shadow-lg ">
       <div className="flex justify-between items-center border-[#34534a]">
         <h2 className="text-lg font-semibold">Attendee Details</h2>
         <p className="text-sm text-gray-400">Step 2/3</p>
