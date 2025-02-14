@@ -31,7 +31,7 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-custom-gradient font-jeju text-white px-6  rounded-lg shadow-lg sm:max-w-full sm:px-4">
+    <div className="md:max-w-md w-[335px] mx-auto bg-custom-gradient font-jeju text-white md:px-6  rounded-lg shadow-lg max-w-full px-4">
       {/* Step Indicator */}
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Ticket Selection</h2>
