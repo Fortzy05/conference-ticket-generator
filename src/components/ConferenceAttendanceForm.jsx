@@ -97,14 +97,14 @@ export default function ConferenceAttendanceForm({ onBack, onSubmit }) {
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <div>
-            <label htmlFor="avatar" className="block text-sm font-medium mb-1">
+            <label htmlFor="avatar" className="block text-sm text-center font-medium mb-1">
               Drag & drop or click to upload
             </label>
           </div>
           <div className="flex items-center justify-center border-[1px] max-w-[508px] max-h-[200px] py-0 px-[25px] m-[20px] border-[#07373f] bg-[rgba(0, 0, 0, 0.2) ">
             <div className="bg-[#0e464f] py-3 px-6 max-w-[240px] h-[200px] rounded-[32px] flex justify-center items-center flex-col">
               <div
-                className="w-full p-6 border-2 border-[#197686] rounded-md flex flex-col items-center justify-center cursor-pointer"
+                className="md:w-full max-w-[240px] h-[200px] py-3 px-6 border-2 border-[#197686] rounded-md flex flex-col items-center justify-center cursor-pointer"
                 onClick={() => fileInputRef.current.click()}
               >
                 <svg
