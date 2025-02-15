@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 import { useEffect, useState } from "react";
 import ticket from "../assets/image.png";
 import ticketOptions from "./ticketOptions.json";
@@ -28,7 +28,7 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel })
   };
 
   return (
-    <div className="md:max-w-md w-[335px] md:w-full mt-4 mx-auto bg-custom-gradient font-jeju text-white md:px-6  rounded-lg shadow-lg max-w-full px-4">
+    <div className="md:max-w-md max-w-[400px] md:w-full mt-4 mx-auto bg-custom-gradient font-jeju text-white md:px-6  rounded-lg shadow-lg  px-4">
       {/* Step Indicator */}
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Ticket Selection</h2>
@@ -109,8 +109,4 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel })
 
 export default SelectTicket;
 
-SelectTicket.propTypes = {
-  nextStep: PropTypes.func.isRequired,
-  selectedTicket: PropTypes.string.isRequired,
-  setSelectedTicket: PropTypes.func.isRequired,
-};
+

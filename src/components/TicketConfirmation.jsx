@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import ticket from "../assets/image.png";
 import barcode from "../assets/BarCode.png";
 const TicketConfirmation = ({ formData, onReset, selectedTicket }) => {
@@ -15,7 +14,7 @@ const TicketConfirmation = ({ formData, onReset, selectedTicket }) => {
         Check your email for a copy or <strong>download</strong>
       </p>
 
-      <div className="bg-ticket border rounded-lg shadow-lg h-auto w-[90%] relative">
+      <div className="bg-ticket pb-10 border rounded-lg shadow-lg h-auto w-[90%] relative">
         <div className="bg-transparent border border-[#197686]">
           <h3 className="text-center text-xl font-bold text-white mb-2">
             Techember Fest &apos;25
@@ -32,19 +31,19 @@ const TicketConfirmation = ({ formData, onReset, selectedTicket }) => {
               className="w-24 h-24 rounded-lg border border-[#1B2A3B]"
             />
           </div>
-          <p className="mt-4 text-[16px] text-center  font-bold text-white font-jeju"> 
-            Ticket Type: {selectedTicket}
-          </p>
 
           <div className="border border-[#197686] bg-teal-950 p-4 rounded-lg text-sm w-5/6 mx-auto">
             <div className="flex justify-between border-b border-[#1B2A3B] pb-2 mb-2">
-              <p className="text-gray-400">Full Name</p>
+              <p className="text-gray-400">Full Name:</p>
               <p>{formData.fullName || "John Doe"}</p>
             </div>
             <div className="flex justify-between border-b border-[#1B2A3B] pb-2 mb-2">
-              <p className="text-gray-400">Email</p>
+              <p className="text-gray-400">Email:</p>
               <p>{formData.email || "user@email.com"}</p>
             </div>
+            <p className="mt-4 text-[16px] text-center  font-bold text-white font-jeju">
+              Ticket Type: {selectedTicket}
+            </p>
           </div>
         </div>
 
@@ -55,28 +54,19 @@ const TicketConfirmation = ({ formData, onReset, selectedTicket }) => {
         </div>
       </div>
       {/* Action Buttons */}
-      <div className="flex justify-between w-full max-w-lg mt-6">
+      <div className="flex justify-between w-full max-w-lg mt-10">
         <button
-          className="w-1/2 py-3 text-white border border-[#1B2A3B] rounded-lg hover:bg-[#0E464F]"
+          className="w-1/2 py-3 text-white bg-[#197686] border border-[#1B2A3B] rounded-lg hover:bg-[#0E464F]"
           onClick={onReset}
         >
           Book Another Ticket
         </button>
-        <button className="px-4 py-4 bg-[#197686] w-60 text-white rounded-md hover:bg-[#02191D] ml-2">
+        <button className="px-4 py-4 bg-[#197686] md:w-60 text-white rounded-md hover:bg-[#02191D] ml-2">
           Download Ticket
         </button>
       </div>
     </div>
   );
-};
-
-TicketConfirmation.propTypes = {
-  formData: PropTypes.shape({
-    fullName: PropTypes.string,
-    email: PropTypes.string,
-    avatar: PropTypes.string,
-  }).isRequired,
-  onBookAnother: PropTypes.func.isRequired,
 };
 
 export default TicketConfirmation;

@@ -52,9 +52,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-[100%] flex flex-col items-center justify-center">
+    <div className=" px-5 md:px-0 mb-10 flex flex-col items-center justify-center">
       <Header />
-      <div className="bg-custom-gradient border-[#24A0B5] border rounded-lg shadow-lg max-w-xl w-full mt-12">
+      <div className="bg-custom-gradient border-[#24A0B5] border rounded-lg shadow-lg max-w-xl w-full mt-8">
         <div className="flex justify-center items-center mb-4">
           {step === 1 && (
             <TicketSelection
