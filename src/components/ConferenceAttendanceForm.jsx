@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 import { useState, useEffect, useRef } from "react";
 import ticketImage from "../assets/image.png"; // Import image properly
 
@@ -220,8 +220,4 @@ export default function ConferenceAttendanceForm({ onBack, onSubmit }) {
   );
 }
 
-// PropTypes validation
-ConferenceAttendanceForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onBack: PropTypes.func.isRequired,
-};
+

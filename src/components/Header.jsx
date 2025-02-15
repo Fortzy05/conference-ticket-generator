@@ -4,7 +4,7 @@ import datas from "./headerData.json";
 function Header() {
   return (
     <header className="flex flex-col justify-center items-center mt-6">
-      <div className="flex items-center w-[320px] md:w-[1080px] max-h-[76px] border-[1px] border-box border-[#197686]  md:max-w-[1200px] justify-between rounded-[12px] px-3 py-4 bg-[#041e23] ">
+      <div className="flex items-center w-[350px] md:w-[1080px] max-h-[76px] border-[1px] border-box border-[#197686]  md:max-w-[1200px] justify-between rounded-[12px] px-3 py-4 bg-[#041e23] ">
         <div className="flex items-center space-x-2 cursor-pointer">
           <img className="h-10 w-auto" src={logo} alt="Ticz Logo" />
         </div>

@@ -13,7 +13,6 @@ export default {
       fontFamily: {
         jeju: ["JejuMyeongjo", "serif"],
       },
-   
     },
     plugins: [],
   },
