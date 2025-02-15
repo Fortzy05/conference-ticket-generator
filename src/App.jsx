@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TicketSelection from "./components/SelectTicket";
+import SelectTicket from "./components/SelectTicket";
 import ConferenceAttendanceForm from "./components/ConferenceAttendanceForm";
 import TicketConfirmation from "./components/TicketConfirmation";
 import Header from "./components/Header";
@@ -7,6 +7,7 @@ import Header from "./components/Header";
 function App() {
   const [selectedTicket, setSelectedTicket] = useState("");
   const [step, setStep] = useState(1);
+  const [ticketQuantity, setTicketQuantity] = useState(1)
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -41,6 +42,7 @@ function App() {
     localStorage.removeItem("selectedTicket"); 
     localStorage.removeItem("ticketQuantity"); 
     setStep(1); 
+    setTicketQuantity(1); 
   };
 
   const handleBookAnother = () => {
@@ -57,11 +59,13 @@ function App() {
       <div className="bg-custom-gradient border-[#24A0B5] border rounded-lg shadow-lg max-w-xl w-full mt-8">
         <div className="flex justify-center items-center mb-4">
           {step === 1 && (
-            <TicketSelection
+            <SelectTicket
               nextStep={nextStep}
               selectedTicket={selectedTicket}
               setSelectedTicket={setSelectedTicket}
               onCancel={handleCancel}
+              ticketQuantity={ticketQuantity}
+              setTicketQuantity={setTicketQuantity}
             />
           )}
           {step === 2 && (
@@ -79,6 +83,7 @@ function App() {
               formData={formData}
               prevStep={prevStep}
               onReset={handleBookAnother}
+              ticketQuantity={ticketQuantity}
             />
           )}
         </div>

@@ -1,10 +1,14 @@
-
 import { useEffect, useState } from "react";
 import ticket from "../assets/image.png";
 import ticketOptions from "./ticketOptions.json";
-const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel }) => {
-  const [ticketQuantity, setTicketQuantity] = useState(1);
-
+const SelectTicket = ({
+  selectedTicket,
+  setSelectedTicket,
+  nextStep,
+  onCancel,
+  setTicketQuantity,
+  ticketQuantity,
+}) => {
   useEffect(() => {
     const storedTicket = localStorage.getItem("selectedTicket");
     const storedQuantity = localStorage.getItem("ticketQuantity");
@@ -22,21 +26,19 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel })
   };
 
   const handleQuantityChange = (event) => {
-    const quantity = event.target.value;
+    const quantity = parseInt(event.target.value, 10);
     setTicketQuantity(quantity);
     localStorage.setItem("ticketQuantity", quantity);
   };
 
   return (
     <div className="md:max-w-md max-w-[400px] md:w-full mt-4 mx-auto bg-custom-gradient font-jeju text-white md:px-6  rounded-lg shadow-lg  px-4">
-      {/* Step Indicator */}
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold">Ticket Selection</h2>
         <p className="text-sm text-gray-400">Step 1/3</p>
       </div>
       <img src={ticket} alt="Ticket" className="w-full h-2 mb-2" />
 
-      {/* Event Info */}
       <div className="bg-custom-gradient border-[#24A0B5] border p-4 rounded-lg mb-4">
         <h3 className="text-xl font-semibold italic">
           Techember Fest &apos;&apos;25
@@ -51,7 +53,6 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel })
       </div>
       <div className="h-1 w-full bg-[#073F3F] mb-4"></div>
 
-      {/* Ticket Type Selection */}
       <div className="mb-4">
         <h4 className="text-sm font-semibold mb-2">Select Ticket Type:</h4>
         <div className="bg-[#052228] border border-[#197686] p-4 rounded-lg">
@@ -93,7 +94,10 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel })
 
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row justify-between mt-6 gap-2">
-        <button onClick={onCancel} className="bg-transparent border border-[#197686] text-white px-4 py-2 rounded-lg w-full sm:w-30 hover:bg-[#24A0B5]">
+        <button
+          onClick={onCancel}
+          className="bg-transparent border border-[#197686] text-white px-4 py-2 rounded-lg w-full sm:w-30 hover:bg-[#24A0B5]"
+        >
           Cancel
         </button>
         <button
@@ -108,5 +112,3 @@ const SelectTicket = ({ selectedTicket, setSelectedTicket, nextStep, onCancel })
 };
 
 export default SelectTicket;
-
-

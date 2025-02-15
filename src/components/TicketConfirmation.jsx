@@ -1,6 +1,6 @@
 import ticket from "../assets/image.png";
 import barcode from "../assets/BarCode.png";
-const TicketConfirmation = ({ formData, onReset, selectedTicket }) => {
+const TicketConfirmation = ({ formData, onReset, selectedTicket, ticketQuantity }) => {
   return (
     <div className="max-w-md font-jeju mb-10 flex flex-col items-center justify-center bg-transparent text-white px-4">
       <div className="flex justify-between items-center w-3/4 border-[#34534a]">
@@ -33,17 +33,22 @@ const TicketConfirmation = ({ formData, onReset, selectedTicket }) => {
           </div>
 
           <div className="border border-[#197686] bg-teal-950 p-4 rounded-lg text-sm w-5/6 mx-auto">
-            <div className="flex justify-between border-b border-[#1B2A3B] pb-2 mb-2">
+            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
               <p className="text-gray-400">Full Name:</p>
               <p>{formData.fullName || "John Doe"}</p>
             </div>
-            <div className="flex justify-between border-b border-[#1B2A3B] pb-2 mb-2">
+            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
               <p className="text-gray-400">Email:</p>
               <p>{formData.email || "user@email.com"}</p>
             </div>
-            <p className="mt-4 text-[16px] text-center  font-bold text-white font-jeju">
-              Ticket Type: {selectedTicket}
-            </p>
+            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
+              <p className="text-gray-400">Ticket Type:</p>
+              <span className="text-white">{selectedTicket}</span>
+            </div>
+            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
+              <p className="text-gray-400">Ticket Quantity: </p>
+              <span className="text-white">{ticketQuantity}</span>
+            </div>
           </div>
         </div>
 
@@ -61,7 +66,7 @@ const TicketConfirmation = ({ formData, onReset, selectedTicket }) => {
         >
           Book Another Ticket
         </button>
-        <button className="px-4 py-4 bg-[#197686] md:w-60 text-white rounded-md hover:bg-[#02191D] ml-2">
+        <button className="px-4 py-4 bg-[#197686] w-30 md:w-60 text-white rounded-md hover:bg-[#02191D] ml-2">
           Download Ticket
         </button>
       </div>
