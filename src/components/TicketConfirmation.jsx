@@ -33,19 +33,19 @@ const TicketConfirmation = ({ formData, onReset, selectedTicket, ticketQuantity 
           </div>
 
           <div className="border border-[#197686] bg-teal-950 p-4 rounded-lg text-sm w-5/6 mx-auto">
-            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
+            <div className="flex gap-2 md:gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
               <p className="text-gray-400">Full Name:</p>
               <p>{formData.fullName || "John Doe"}</p>
             </div>
-            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
+            <div className="flex gap-2 md:gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
               <p className="text-gray-400">Email:</p>
               <p>{formData.email || "user@email.com"}</p>
             </div>
-            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
+            <div className="flex gap-2 md:gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
               <p className="text-gray-400">Ticket Type:</p>
               <span className="text-white">{selectedTicket}</span>
             </div>
-            <div className="flex gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
+            <div className="flex gap-2 md:gap-5 border-b border-[#1B2A3B] pb-2 mb-2">
               <p className="text-gray-400">Ticket Quantity: </p>
               <span className="text-white">{ticketQuantity}</span>
             </div>
@@ -59,14 +59,14 @@ const TicketConfirmation = ({ formData, onReset, selectedTicket, ticketQuantity 
         </div>
       </div>
       {/* Action Buttons */}
-      <div className="flex justify-between w-full max-w-lg mt-10">
+      <div className="flex flex-col md:flex-row gap-4 justify-between w-full max-w-lg mt-10">
         <button
-          className="w-1/2 py-3 text-white bg-[#197686] border border-[#1B2A3B] rounded-lg hover:bg-[#0E464F]"
+          className=" md:w-1/2 py-4  px-4 text-white bg-[#197686] border border-[#1B2A3B] rounded-lg hover:bg-[#0E464F]"
           onClick={onReset}
         >
           Book Another Ticket
         </button>
-        <button className="px-4 py-4 bg-[#197686] w-30 md:w-60 text-white rounded-md hover:bg-[#02191D] ml-2">
+        <button className="md:w-1/2 px-4 py-4 bg-[#197686] w-30  text-white rounded-md hover:bg-[#02191D] ">
           Download Ticket
         </button>
       </div>
