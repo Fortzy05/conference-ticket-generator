@@ -75,6 +75,7 @@ function App() {
               formData={formData}
               setFormData={setFormData}
               onBack={handleback}
+              selectedTicket={selectedTicket}
             />
           )}
           {step === 3 && (

@@ -7,7 +7,7 @@ const SelectTicket = ({
   nextStep,
   onCancel,
   setTicketQuantity,
-  ticketQuantity,
+  ticketQuantity
 }) => {
   useEffect(() => {
     const storedTicket = localStorage.getItem("selectedTicket");
